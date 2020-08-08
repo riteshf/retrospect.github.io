@@ -1,26 +1,26 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import {App, AppHeader, AppLogo, AppLink} from './App.styled';
 
-function App() {
+export const Root =() => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <App>
+      <AppHeader>
+        <AppLogo src={logo} alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
+        <AppLink
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
-      </header>
-    </div>
+        </AppLink>
+      </AppHeader>
+    </App>
   );
 }
 
-export default App;
+export default Root;
