@@ -2,14 +2,9 @@
 
 It is an assignment to be submitted to [ThoughtWorks](https://www.thoughtworks.com/).
 
-### Purpose
-
-It is an assignment to be submitted to [ThoughtWorks](https://www.thoughtworks.com/).
-
 ### Tecnical Information
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) with [Styled Components](https://styled-components.com/).
-This assignment does not use any 3rd party CSS framework, instead uses vanila CSS to demonstrate my Capabilities with CSS.
 
 ## Available Scripts
 
