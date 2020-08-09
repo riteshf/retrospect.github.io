@@ -1,6 +1,6 @@
 ## Web Application Information
 
-It is an assignment to be submitted to [ThoughtWorks](https://www.thoughtworks.com/).
+It is a Retrospection Board used for looking back on or dealing with past events, so that we can improve on it together.
 
 ### Tecnical Information
 

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { RetrospectiveContext } from "../../store/retrospective.store";
 
 // constants
-import { LIKE_CARD } from "../../store/retrospective.constants";
+import { LIKE_CARD, DELETE_CARD } from "../../store/retrospective.constants";
 
 // styles
 import {
@@ -25,6 +25,13 @@ const Card = ({ type, cardKey, color, message, likes }) => {
       data: { type, cardKey },
     });
 
+  const removeCard = () => {
+    dispatch({
+      type: DELETE_CARD,
+      data: { type, cardKey },
+    });
+  };
+
   return (
     <CardBackgroundStyled backgroundColor={color}>
       <InputStyled
@@ -37,7 +44,7 @@ const Card = ({ type, cardKey, color, message, likes }) => {
         <LikesStyled onClick={increaseLike} role="button" tabIndex={0}>
           +{likes}
         </LikesStyled>
-        <ButtonStyled>x</ButtonStyled>
+        <ButtonStyled onClick={removeCard}>x</ButtonStyled>
       </div>
     </CardBackgroundStyled>
   );

@@ -27,7 +27,7 @@ export const RetrospectiveProvider = ({ children }) => {
           [type]: [
             ...state[type],
             {
-              key: uuidv4(),
+              cardKey: uuidv4(),
               message,
               likes,
             },
