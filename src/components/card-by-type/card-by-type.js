@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Card from "../card/card";
 
 // store
-import { store } from "../../store/retrospective.store";
+import { RetrospectiveContext } from "../../store/retrospective.store";
 
 // constants
 import { ADD_CARD } from "../../store/retrospective.constants";
@@ -19,7 +19,7 @@ import {
 } from "./card-by-type.styled";
 
 const CardByType = ({ type, title, color }) => {
-  const { state, dispatch } = useContext(store);
+  const { state, dispatch } = useContext(RetrospectiveContext);
 
   const cards = state[type];
   const addCard = () => {
@@ -37,7 +37,7 @@ const CardByType = ({ type, title, color }) => {
       </TitleStyled>
       <CardsWrapperStyled>
         {cards.map((card) => (
-          <Card {...card} type={type} color={color} />
+          <Card key={card.cardKey} {...card} type={type} color={color} />
         ))}
       </CardsWrapperStyled>
     </>

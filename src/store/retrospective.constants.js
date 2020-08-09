@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 // actions
 export const ADD_CARD = "ADD_CARD";
 export const LIKE_CARD = "LIKE_CARD";
+export const DELETE_CARD = "DELETE_CARD";
 
 // constatns
 export const WENT_WELL = "WENT_WELL";
@@ -31,6 +32,7 @@ export const CARD_BY_TYPE_INFO = [
     color: "#c3ee8e",
   },
   {
+    key: uuidv4(),
     title: "Action items",
     type: ACTION_ITEM,
     color: "#e85e91",

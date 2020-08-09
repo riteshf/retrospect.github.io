@@ -5,33 +5,27 @@ import { v4 as uuidv4 } from "uuid";
 // constants
 import {
   ADD_CARD,
-  CARD_BY_TYPE_INFO,
   LIKE_CARD,
+  DELETE_CARD,
+  CARD_BY_TYPE_INFO,
 } from "./retrospective.constants";
 
-const initialState = CARD_BY_TYPE_INFO.reduce((acc, { type }) => {
-  acc[type] = [
-    {
-      key: uuidv4(),
-      message: "temp",
-      likes: 0,
-    },
-  ];
+export const initialState = CARD_BY_TYPE_INFO.reduce((acc, { type }) => {
+  acc[type] = [];
   return acc;
 }, {});
 
-const store = createContext(initialState);
-const { Provider } = store;
+export const RetrospectiveContext = createContext(initialState);
 
-const RetrospectiveProvider = ({ children }) => {
+export const RetrospectiveProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case ADD_CARD: {
         const { type, message, likes } = action.data;
         const newState = {
-          ...initialState,
-          [initialState[type]]: [
-            ...initialState[type],
+          ...state,
+          [type]: [
+            ...state[type],
             {
               key: uuidv4(),
               message,
@@ -42,22 +36,36 @@ const RetrospectiveProvider = ({ children }) => {
         return newState;
       }
       case LIKE_CARD: {
-        const { type, key } = action.data;
+        const { type, cardKey } = action.data;
+        const cards = state[type].map((card) => {
+          if (card.cardKey === cardKey) card.likes += 1;
+          return card;
+        });
+
         const newState = {
-          ...initialState,
-          [initialState[type]]: initialState[type].map((card) => {
-            if (card.key === key) card.likes += 1;
-            return card;
-          }),
+          ...state,
+          [type]: cards,
+        };
+        return newState;
+      }
+      case DELETE_CARD: {
+        const { type, cardKey } = action.data;
+        const cards = state[type].filter((card) => card.cardKey !== cardKey);
+
+        const newState = {
+          ...state,
+          [type]: cards,
         };
         return newState;
       }
       default:
-        throw new Error();
+        throw state;
     }
   }, initialState);
 
-  return <Provider value={{ state, dispatch }}>{children}</Provider>;
+  return (
+    <RetrospectiveContext.Provider value={{ state, dispatch }}>
+      {children}
+    </RetrospectiveContext.Provider>
+  );
 };
-
-export { store, RetrospectiveProvider };

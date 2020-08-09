@@ -1,22 +1,28 @@
 import React, { useState, useContext } from "react";
+import PropTypes from "prop-types";
 
 // store
-import { store } from "../../store/retrospective.store";
+import { RetrospectiveContext } from "../../store/retrospective.store";
 
 // constants
 import { LIKE_CARD } from "../../store/retrospective.constants";
 
 // styles
-import { CardBackgroundStyled, InputStyled, LikesStyled } from "./card.styled";
+import {
+  CardBackgroundStyled,
+  InputStyled,
+  LikesStyled,
+  ButtonStyled,
+} from "./card.styled";
 
-const Card = ({ type, key, color, message, likes }) => {
-  const { dispatch } = useContext(store);
+const Card = ({ type, cardKey, color, message, likes }) => {
+  const { dispatch } = useContext(RetrospectiveContext);
   const [text, setText] = useState(message);
 
   const increaseLike = () =>
     dispatch({
       type: LIKE_CARD,
-      data: { type, key },
+      data: { type, cardKey },
     });
 
   return (
@@ -27,9 +33,18 @@ const Card = ({ type, key, color, message, likes }) => {
         onChange={(e) => setText(e.target.value)}
         value={text}
       />
-      <LikesStyled onClick={increaseLike}>+{likes}</LikesStyled>
+      <div>
+        <LikesStyled onClick={increaseLike} role="button" tabIndex={0}>
+          +{likes}
+        </LikesStyled>
+        <ButtonStyled>x</ButtonStyled>
+      </div>
     </CardBackgroundStyled>
   );
+};
+
+Card.propTypes = {
+  cardKey: PropTypes.string.isRequired,
 };
 
 export default Card;

@@ -17,8 +17,17 @@ export const InputStyled = styled.textarea`
 `;
 InputStyled.displayName = "InputStyled";
 
-export const LikesStyled = styled.div`
+export const LikesStyled = styled.span`
   font-size: 1rem;
   padding-left: 5px;
 `;
 LikesStyled.displayName = "LikesStyled";
+
+export const ButtonStyled = styled.button`
+  background: red;
+  border-radius: 50%;
+  color: white;
+  margin-left: 1rem;
+  cursor: pointer;
+`;
+ButtonStyled.displayName = "ButtonStyled";
