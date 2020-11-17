@@ -24,7 +24,7 @@ const Retrospective = () => {
         <HeaderStyled>Retrospective</HeaderStyled>
         <CardByTypeStyled>
           {CARD_BY_TYPE_INFO.map((cardByType) => (
-            <div key={cardByType.key}>
+            <div key={cardByType.key} className={cardByType.type}>
               <CardByType {...cardByType} />
             </div>
           ))}

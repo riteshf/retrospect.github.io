@@ -35,6 +35,7 @@ const Card = ({ type, cardKey, color, message, likes }) => {
   return (
     <CardBackgroundStyled backgroundColor={color}>
       <InputStyled
+        autoFocus
         backgroundColor={color}
         type="text"
         onChange={(e) => setText(e.target.value)}
