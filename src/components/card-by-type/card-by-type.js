@@ -25,7 +25,7 @@ const CardByType = ({ type, title, color }) => {
   const addCard = () => {
     dispatch({
       type: ADD_CARD,
-      data: { type, message: "Enter new Message here", likes: 0 },
+      data: { type, message: "", likes: 0 },
     });
   };
 

@@ -34,19 +34,22 @@ const Card = ({ type, cardKey, color, message, likes }) => {
 
   return (
     <CardBackgroundStyled backgroundColor={color}>
-      <InputStyled
-        autoFocus
-        backgroundColor={color}
-        type="text"
-        onChange={(e) => setText(e.target.value)}
-        value={text}
-      />
-      <div>
-        <LikesStyled onClick={increaseLike} role="button" tabIndex={0}>
-          +{likes}
-        </LikesStyled>
-        <ButtonStyled onClick={removeCard}>x</ButtonStyled>
-      </div>
+        <span className={type}>
+        <InputStyled
+          autoFocus
+          backgroundColor={color}
+          type="text"
+          onChange={(e) => setText(e.target.value)}
+          value={text}
+          placeholder="Enter new Message here"
+        />
+        <div>
+          <LikesStyled onClick={increaseLike} role="button" tabIndex={0}>
+            +{likes}
+          </LikesStyled>
+          <ButtonStyled onClick={removeCard}>x</ButtonStyled>
+        </div>
+      </span>
     </CardBackgroundStyled>
   );
 };

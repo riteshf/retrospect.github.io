@@ -14,23 +14,23 @@ import { CARD_BY_TYPE_INFO } from "../../store/retrospective.constants";
 import {
   RetrospectiveStyled,
   HeaderStyled,
-  CardByTypeStyled,
+  BodyStyled,
 } from "./retrospective.styled";
 
 const Retrospective = () => {
   return (
-    <RetrospectiveProvider>
-      <RetrospectiveStyled>
+    <RetrospectiveStyled>
+      <RetrospectiveProvider>
         <HeaderStyled>Retrospective</HeaderStyled>
-        <CardByTypeStyled>
+        <BodyStyled>
           {CARD_BY_TYPE_INFO.map((cardByType) => (
             <div key={cardByType.key} className={cardByType.type}>
               <CardByType {...cardByType} />
             </div>
           ))}
-        </CardByTypeStyled>
-      </RetrospectiveStyled>
-    </RetrospectiveProvider>
+        </BodyStyled>
+      </RetrospectiveProvider>
+    </RetrospectiveStyled>
   );
 };
 
