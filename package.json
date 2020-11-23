@@ -13,13 +13,14 @@
     "uuid": "^8.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "cy:start": "react-scripts -r @cypress/instrument-cra start",
+    "start": "BROWSER=none react-scripts -r @cypress/instrument-cra start",
+    "run": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cy:run": "cypress run --headless",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "test:coverage": "start-test 3000 cy:run"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,6 +40,7 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.8.3",
     "@cypress/instrument-cra": "^1.4.0",
-    "cypress": "^5.6.0"
+    "cypress": "^5.6.0",
+    "start-server-and-test": "^1.11.6"
   }
 }
