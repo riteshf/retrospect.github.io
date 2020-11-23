@@ -13,13 +13,13 @@
     "uuid": "^8.3.0"
   },
   "scripts": {
-    "start": "react-scripts -r @cypress/instrument-cra start",
+    "start": "react-scripts start",
+    "cy:start": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cy:run": "cypress run --headless",
-    "cy:open": "cypress open",
-    "dev": "start-test 3000 cypress"
+    "cy:open": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
