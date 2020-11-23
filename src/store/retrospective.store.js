@@ -1,6 +1,6 @@
 // vendor
-import React, { createContext, useReducer } from "react";
-import { v4 as uuidv4 } from "uuid";
+import React, { createContext, useReducer } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 // constants
 import {
@@ -8,12 +8,15 @@ import {
   LIKE_CARD,
   DELETE_CARD,
   CARD_BY_TYPE_INFO,
-} from "./retrospective.constants";
+} from './retrospective.constants';
 
-export const initialState = CARD_BY_TYPE_INFO.reduce((acc, { type }) => {
-  acc[type] = [];
-  return acc;
-}, {});
+export const initialState = CARD_BY_TYPE_INFO.reduce(
+  (acc, { type }) => {
+    acc[type] = [];
+    return acc;
+  },
+  {},
+);
 
 export const RetrospectiveContext = createContext(initialState);
 
@@ -21,7 +24,7 @@ export const RetrospectiveProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case ADD_CARD: {
-        const { type, message, likes } = action.data;
+        const { type, message, placeholder, likes } = action.data;
         const newState = {
           ...state,
           [type]: [
@@ -29,6 +32,7 @@ export const RetrospectiveProvider = ({ children }) => {
             {
               cardKey: uuidv4(),
               message,
+              placeholder,
               likes,
             },
           ],
@@ -50,7 +54,9 @@ export const RetrospectiveProvider = ({ children }) => {
       }
       case DELETE_CARD: {
         const { type, cardKey } = action.data;
-        const cards = state[type].filter((card) => card.cardKey !== cardKey);
+        const cards = state[type].filter(
+          (card) => card.cardKey !== cardKey,
+        );
 
         const newState = {
           ...state,

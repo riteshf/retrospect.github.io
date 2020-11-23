@@ -1,11 +1,14 @@
-import React, { useState, useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 // store
-import { RetrospectiveContext } from "../../store/retrospective.store";
+import { RetrospectiveContext } from '../../store/retrospective.store';
 
 // constants
-import { LIKE_CARD, DELETE_CARD } from "../../store/retrospective.constants";
+import {
+  LIKE_CARD,
+  DELETE_CARD,
+} from '../../store/retrospective.constants';
 
 // styles
 import {
@@ -13,9 +16,16 @@ import {
   InputStyled,
   LikesStyled,
   ButtonStyled,
-} from "./card.styled";
+} from './card.styled';
 
-const Card = ({ type, cardKey, color, message, likes }) => {
+const Card = ({
+  type,
+  cardKey,
+  color,
+  message,
+  likes,
+  placeholder,
+}) => {
   const { dispatch } = useContext(RetrospectiveContext);
   const [text, setText] = useState(message);
 
@@ -34,17 +44,21 @@ const Card = ({ type, cardKey, color, message, likes }) => {
 
   return (
     <CardBackgroundStyled backgroundColor={color}>
-        <span className={type}>
+      <span className={type}>
         <InputStyled
           autoFocus
           backgroundColor={color}
           type="text"
           onChange={(e) => setText(e.target.value)}
           value={text}
-          placeholder="Enter new Message here"
+          placeholder={placeholder}
         />
         <div>
-          <LikesStyled onClick={increaseLike} role="button" tabIndex={0}>
+          <LikesStyled
+            onClick={increaseLike}
+            role="button"
+            tabIndex={0}
+          >
             +{likes}
           </LikesStyled>
           <ButtonStyled onClick={removeCard}>x</ButtonStyled>

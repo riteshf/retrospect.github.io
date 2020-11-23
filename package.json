@@ -17,7 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "cypress run --headless",
+    "cy:run": "cypress run --headless",
+    "cy:open": "cypress open",
     "dev": "start-test 3000 cypress"
   },
   "eslintConfig": {
